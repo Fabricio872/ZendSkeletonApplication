@@ -1,4 +1,19 @@
-<div class="row">
+<div class="row mt-3">
 
-
+    <form action="<?= $this->url('home') ?>" method="post" enctype="multipart/form-data">
+        <input type="text" name="name" value="<?= $name ?>">
+        <input type="file" name="image">
+        <button type="submit">Upload</button>
+    </form>
+</div>
+<div class="row mt-3">
+    <?php foreach ($images as $image): ?>
+    <div>
+        <a href="<?= $this->url('home') ?>?delete=<?= $image['id'] ?>" class="close py-2 px-3" aria-label="Close" style="margin-left: -45px">
+            <span aria-hidden="true">&times;</span>
+        </a>
+        <img src="data:<?= $image['type'] ?>;base64, <?= $image['data'] ?>" alt="..." class="img-thumbnail m-1" style="max-width: 250px">
+        <p><?= $image['name'] ?></p>
+    </div>
+    <?php endforeach; ?>
 </div>
